@@ -1,22 +1,32 @@
 import React, { useState } from 'react'
 // import allRoutes from './routes/allRoutes'
 import './App.css'
-import Register from './components/pages/Register'
+import Register from './components/pages/signup/Register';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Signin from './components/pages/Signin';
+import Login from './components/pages/login/Login';
+import Home from './components/pages/home/Home';
+import SearchInput from './components/sidebar/SearchInput';
+import Sidebar from './components/sidebar/Sidebar';
 
 function App() {
  
 
   return (
     <>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Register />} />
-        <Route path="/SignIn" element={<Signin />} />
-      </Routes>
-    </BrowserRouter>
+<div className="p-4 h-screen flex items-center justify-center">
 
+  <Home/>
+
+    {/* <Sidebar/> */}
+
+    {/* <BrowserRouter>
+      <Routes>
+        <Route path="/signup" element={<Register />} />
+        <Route path="/signIn" element={<Login />} />
+        <Route path="/" element={<Home/>} />
+      </Routes>
+    </BrowserRouter> */}
+</div>
     </>
   )
 }
