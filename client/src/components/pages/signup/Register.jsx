@@ -1,32 +1,32 @@
 import React, { useState } from "react";
+import { ToastContainer } from 'react-toastify';
 import "../../styles/register.css";
 import { Link } from "react-router-dom";
+import useSignUp from "../../../hooks/useSignUp";
 const Register = () => {
-  const [formData, setFormData] = useState({
+  const [inputs, setInputs] = useState({
+    fullname:"",
     username: "",
-    email: "",
-    password: "",
+   password: "",
+    confirmPassword: "",
+    gender:""
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+const {loading , signUp} = useSignUp()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post("/api/register", formData);
-      console.log("Registration successful:", response.data);
-    } catch (error) {
-      console.error("Registration failed:", error.response.data);
-    }
+   console.log(inputs)
+   await signUp(inputs)
+  };
+
+  const handleGenderChange = (gender) => {
+    console.log("Selected Gender:", gender);
+    setInputs({...inputs, gender});
   };
   return (
     <>
+
       <div className="whole-regipage">
         <form className="form " onSubmit={handleSubmit}>
           <p className="title">
@@ -147,12 +147,14 @@ const Register = () => {
           </p>
           <p className="message">Signup now and get full access to our app. </p>
 
-          <label htmlFor="" className="input">
+          <label htmlFor="" className="">
             <input
               required=""
               placeholder="Full Name "
               type="text"
               className="input"
+              value={inputs.fullname}
+              onChange={(e)=> setInputs({...inputs,fullname:e.target.value})}
             />
           </label>
 
@@ -160,12 +162,12 @@ const Register = () => {
             <input
               required=""
               placeholder="Username"
-              type="email"
+              type="text"
               className="input"
               id="email"
               name="email"
-              value={formData.email}
-              onChange={handleChange}
+              value={inputs.username}
+              onChange={(e)=> setInputs({...inputs, username:e.target.value})}
             />
           </label>
 
@@ -175,6 +177,8 @@ const Register = () => {
               placeholder="Password"
               type="password"
               className="input"
+              value={inputs.password}
+              onChange={(e)=> setInputs({...inputs,password:e.target.value})}
             />
           </label>
           <label>
@@ -185,8 +189,8 @@ const Register = () => {
               className="input"
               id="password"
               name="password"
-              value={formData.password}
-              onChange={handleChange}
+              value={inputs.confirmPassword}
+              onChange={(e)=> setInputs({...inputs,confirmPassword:e.target.value})}
             />
           </label>
           <div className="genderDiv flex gap-3 items-start justify-start w-full ">
@@ -195,7 +199,9 @@ const Register = () => {
         type="radio"
         id="radio"
         name="gender"
+        checked={inputs.gender === "male"}
         value="male"
+        onChange={() => handleGenderChange("male")}
         className="peer z-10 h-full w-full cursor-pointer opacity-0"
       />
       <div
@@ -230,7 +236,9 @@ const Register = () => {
         type="radio"
         id="radio"
         name="gender"
-        value="female"
+        checked={inputs.gender === "female"}
+                value="female"
+                onChange={() => handleGenderChange("female")}
         className="peer z-10 h-full w-full cursor-pointer opacity-0"
       />
       <div

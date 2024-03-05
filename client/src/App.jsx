@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import  { Toaster } from 'react-hot-toast';
 // import allRoutes from './routes/allRoutes'
 import './App.css'
 import Register from './components/pages/signup/Register';
@@ -15,17 +16,19 @@ function App() {
     <>
 <div className="p-4 h-screen flex items-center justify-center">
 
-  <Home/>
+  {/* <Home/> */}
 
     {/* <Sidebar/> */}
 
-    {/* <BrowserRouter>
+    <BrowserRouter>
+      <Toaster/>
       <Routes>
         <Route path="/signup" element={<Register />} />
         <Route path="/signIn" element={<Login />} />
         <Route path="/" element={<Home/>} />
       </Routes>
-    </BrowserRouter> */}
+     
+    </BrowserRouter>
 </div>
     </>
   )
