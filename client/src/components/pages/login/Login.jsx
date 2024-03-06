@@ -137,7 +137,7 @@ const Login = () => {
 
                     <label className='flex relative'>
                         <input required="" placeholder="Password" type={showPass ? "text" : "password"} className="input w-4/5" />
-                        <span className='' style={{ display: 'flex', position: "absolute", right: '9%', cursor:'pointer' }}>
+                        <span className='' style={{ display: 'flex', position: "absolute", right: '9%', cursor:'pointer', color:'black' }}>
                             {showPass ? (
                                 <VisibilityOffIcon onClick={togglePasswordVisibility} />
                             ) : (

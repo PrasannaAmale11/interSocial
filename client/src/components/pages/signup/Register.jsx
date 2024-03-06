@@ -263,8 +263,12 @@ const {loading , signUp} = useSignUp()
       </svg>
           </div>
           </div>
-          <button className="cssbuttons-io" type="submit">
+          <button className="cssbuttons-io" type="submit" disabled={loading}>
+           {loading ? (
+            <span className="loading loading-spinner loading-md"></span>
+           ): (
             <span>Register</span>
+           )}
           </button>
           <p className="signin">
             Already have an acount ? <Link to="/signIn">Login</Link>{" "}
