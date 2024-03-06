@@ -32,7 +32,7 @@ export const signup = async (req, res) => {
             username,
             password : hashedPassword,
             gender, 
-            profilePic: gender ?  girlProfilePic : boyProfilePic
+            profilePic: gender === "male" ? boyProfilePic : girlProfilePic,
         }) 
 
 
