@@ -2,18 +2,29 @@ import React, { useState } from 'react';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { Link } from 'react-router-dom';
+import useLogIn from '../../../hooks/useLogin';
 
 const Login = () => {
     const [showPass, setShowPass] = useState(false);
+
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
+    const {loading, login} =    useLogIn();
 
     const togglePasswordVisibility = () => {
         setShowPass(prevState => !prevState);
     };
 
+    const handelSubmit = async (e) => {
+      e.preventDefault();
+      await login(username, password)
+    }
+
     return (
         <>
             <div className="whole-regipage">
-                <form className="form">
+                <form className="form" onSubmit={handelSubmit}>
                     <p className=" text-3xl flex items-center justify-center font-bold mb-2">INTER S
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -132,11 +143,17 @@ const Login = () => {
                     <p className="message">SignIn now and get full access to our app. </p>
 
                     <label className=''>
-                        <input required="" placeholder="Email" type="email" className="input" id="email" name="email" />
+                        <input required="" placeholder="Username" type="text" className="input text-2xl"  name="username" 
+                        value={username}
+                        onChange={(e)=> setUsername(e.target.value)}
+                        />
                     </label>
 
                     <label className='flex relative'>
-                        <input required="" placeholder="Password" type={showPass ? "text" : "password"} className="input w-4/5" />
+                        <input required="" placeholder="Password" type={showPass ? "text" : "password"} className="input w-4/5 text-2xl"
+                         value={password}
+                         onChange={(e)=> setPassword(e.target.value)}
+                        />
                         <span className='' style={{ display: 'flex', position: "absolute", right: '9%', cursor:'pointer', color:'black' }}>
                             {showPass ? (
                                 <VisibilityOffIcon onClick={togglePasswordVisibility} />
@@ -146,7 +163,17 @@ const Login = () => {
                         </span>
                     </label>
 
-                    <button className="cssbuttons-io" type="submit"><span>Login</span></button>
+                    <button className="cssbuttons-io" type="submit" disabled={loading}>
+                              {loading ? (
+                                <span className="loading loading-spinner loading-md"></span>
+                              ): (
+                                <span>Login</span>
+                              )
+                              }
+
+                      
+                      
+                    </button>
                     <p className="signin">Dont have an account? <Link to="/signup">SignUp</Link> </p>
                 </form>
             </div>
