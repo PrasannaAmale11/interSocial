@@ -25,7 +25,7 @@ const Login = () => {
         <>
             <div className="whole-regipage">
                 <form className="form" onSubmit={handelSubmit}>
-                    <p className=" text-3xl flex items-center justify-center font-bold mb-2">INTER S
+                    <p className=" text-3xl flex items-center justify-center font-bold mb-2" style={{color:'black'}}>INTER S
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="1em"
@@ -127,7 +127,7 @@ const Login = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                fill="#ffff00"
+                fill=" #FF9900"
                 mask="url(#lineMdMoonFilledAltToSunnyFilledLoopTransition0)"
               >
                 <animate
@@ -139,13 +139,14 @@ const Login = () => {
               </circle>
             </svg>
             CIAL</p>
-                    <p className="title">LOGIN</p>
+                    <p className="title" style={{color:'#4c4b4b'}}>LOGIN</p>
                     <p className="message">SignIn now and get full access to our app. </p>
 
                     <label className=''>
-                        <input required="" placeholder="Username" type="text" className="input text-2xl"  name="username" 
+                        <input required="" placeholder="Username" type="text" className="input text-6xl"  name="username" 
                         value={username}
                         onChange={(e)=> setUsername(e.target.value)}
+                        style={{fontSize:'1.2rem'}}
                         />
                     </label>
 
@@ -153,6 +154,7 @@ const Login = () => {
                         <input required="" placeholder="Password" type={showPass ? "text" : "password"} className="input w-4/5 text-2xl"
                          value={password}
                          onChange={(e)=> setPassword(e.target.value)}
+                         style={{fontSize:'1.2rem'}}
                         />
                         <span className='' style={{ display: 'flex', position: "absolute", right: '9%', cursor:'pointer', color:'black' }}>
                             {showPass ? (

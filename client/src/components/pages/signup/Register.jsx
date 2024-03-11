@@ -155,6 +155,7 @@ const {loading , signUp} = useSignUp()
               className="input"
               value={inputs.fullname}
               onChange={(e)=> setInputs({...inputs,fullname:e.target.value})}
+              style={{fontSize:'1.2rem'}}
             />
           </label>
 
@@ -168,6 +169,7 @@ const {loading , signUp} = useSignUp()
               name="email"
               value={inputs.username}
               onChange={(e)=> setInputs({...inputs, username:e.target.value})}
+              style={{fontSize:'1.2rem'}}
             />
           </label>
 
@@ -179,6 +181,7 @@ const {loading , signUp} = useSignUp()
               className="input"
               value={inputs.password}
               onChange={(e)=> setInputs({...inputs,password:e.target.value})}
+              style={{fontSize:'1.2rem'}}
             />
           </label>
           <label>
@@ -191,6 +194,7 @@ const {loading , signUp} = useSignUp()
               name="password"
               value={inputs.confirmPassword}
               onChange={(e)=> setInputs({...inputs,confirmPassword:e.target.value})}
+              style={{fontSize:'1.2rem'}}
             />
           </label>
           <div className="genderDiv flex gap-3 items-start justify-start w-full ">

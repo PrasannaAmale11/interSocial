@@ -63,12 +63,15 @@ body{
   }
   
   .message, .signin {
-    color: rgb(0, 0, 0);
+    color:#5e5959;
     font-size: 14px;
   }
   
   input::placeholder{
     color: black !important;
+  }
+  .input::placeholder{
+    font-size: 17px !important;
   }
   .signin {
     text-align: center;
@@ -204,4 +207,28 @@ body{
     overflow: hidden;
   }
 
+
+  /* Media Quries */
+  @media screen and (min-width: 300px) and (max-width: 450px) {
+    .form{
+      width: 95% !important;
+    }
+    .mainScreen{
+      padding: 0 !important;
+      width: 100vw !important;
+    }
+    .title{
+      font-size: 23px;
+      letter-spacing: 1px;
+    }
+  }
  
+
+  @media screen and (min-width: 300px) and (max-width: 639px){
+    .searchComp{
+      width: 100%;
+    }
+    .searchComp input{
+      width: 100%;
+    }
+  }
